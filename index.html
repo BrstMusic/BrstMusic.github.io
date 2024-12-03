@@ -3,8 +3,9 @@
 <html lang="en">
 
 <head>
+    
 <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-<img id="gif" src="images/FLgif.gif" alt="Loading Animation" />
+
 
     <!-- Favicon for browser icon -->
 
@@ -34,7 +35,8 @@
 
             padding: 20px;
 
-            background-color: #85cc29; /* Light sky blue background */
+            background: rgb(0,182,2);
+            background: linear-gradient(234deg, rgba(0,182,2,1) 0%, rgba(242,243,0,1) 60%, rgba(255,0,0,1) 100%);
 
             top:8%
 
@@ -72,17 +74,21 @@
 
             max-width: 350px;
 
-            position: relative;
-
-            padding-left: 10px;
+            position: relative; /* Position it absolutely */
 
             padding-right: 10px;
 
+            padding-left: 10px;
+
+    top: -19px; /* Adjust to position the list vertically */
+
+    right: 10px; /* Adjust the right distance from the edge of the screen */
+
+ 
+
+
+
         }
-
-
-
-
 
 
 #songListRight {
@@ -97,7 +103,7 @@
 
     position: absolute; /* Position it absolutely */
 
-    top: 40px; /* Adjust to position the list vertically */
+    top: 0%; /* Adjust to position the list vertically */
 
     right: 10px; /* Adjust the right distance from the edge of the screen */
 
@@ -117,6 +123,9 @@ h1 {
 
     transform: translateX(-50%); /* Adjusts it precisely to the center */
 
+    font-size: 32px;
+
+
 }
 
 h4 {
@@ -135,11 +144,23 @@ h5 {
 
     position: absolute;
 
-    top: 649px; /* Moves the heading 100px from the top of the screen */
+    top: 112%; /* Moves the heading 100px from the top of the screen */
 
-    left: 50.7%; /* Moves the heading to the center horizontally */
+    left: 55%; /* Moves the heading to the center horizontally */
 
     transform: translateX(-50%); /* Adjusts it precisely to the center */
+
+}
+
+h3 {
+
+position: absolute;
+
+top:30%; /* Moves the heading 100px from the top of the screen */
+
+left: 55%; /* Moves the heading to the center horizontally */
+
+transform: translateX(-50%); /* Adjusts it precisely to the center */
 
 }
 
@@ -183,7 +204,7 @@ h5 {
 
             display: block;
 
-            margin-top: 30px; /* Move the progress bar down */
+            margin-top: 0.7%; /* Move the progress bar down */
 
             width: 100%;
 
@@ -195,9 +216,9 @@ h5 {
 
             position: absolute;
 
-            bottom: 640px; /* Above the audio player */
+            bottom: -18.5%; /* Above the audio player */
 
-            right: 20px; /* Align to the right side */
+            right: 1%; /* Align to the right side */
 
             width: 200px; /* Increase the width of the GIF */
 
@@ -213,29 +234,263 @@ h5 {
         /* Style for displaying the currently playing song */
 
         #currentSong {
-
             font-weight: bold;
-
             font-size: 16px;
-
-            text-align: right;
-
+            text-align: left;
             position: absolute;
+            top: 94%;
+            
+            
+            transform: translateY(-10%);
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: 100%;
+            left: 2%;
+        }
 
-            top: 84%;
+        .div-button {
+    display: inline-block;
+    padding: 15px 20px;
+    background-color: #626b74;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
 
-            right: 650px; /* Position it next to the middle line on the right side */
+    /* Positioning */
+    position: absolute;  /* Or 'relative', 'fixed' depending on your needs */
+    bottom: -21%;            /* Adjust vertical position */
+    left: 34%;           /* Adjust horizontal position */
+    transform: translate(-50%, -50%);  /* Centers the button */
+        }
 
-            transform: translateY(-10%); /* Center vertically */
+       .div-button:hover {
+    background-color: #00b4ff; /* Light-up color on hover */
+    box-shadow: 0 0 10px 3px #00b4ff; /* Glowing effect */
+}
 
+.div-button:active {
+background-color: #000000;
+}
+
+
+.div-oldindex {
+    display: inline-block;
+    padding: 15px 20px;
+    background-color: #626b74;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    transition: background-color 0.9s, box-shadow 0.3s;
+
+    /* Positioning */
+    position: absolute;  /* Or 'relative', 'fixed' depending on your needs */
+    bottom: -21%;            /* Adjust vertical position */
+    left: 76.4%;           /* Adjust horizontal position */
+    transform: translate(-50%, -50%);  /* Centers the button */
+        }
+
+       .div-oldindex:hover {
+    background-color: #1ebbff; /* Light-up color on hover */
+    box-shadow: 0 0 10px 3px #014765; /* Glowing effect */
+}
+
+.div-oldindex:active {
+background-color: #000000;
+}
+
+ 
+/* General styling for the stop button */
+#stopButton {
+    padding: 12px 24px;                /* Button size */
+    font-size: 16px;                    /* Font size */
+    font-weight: bold;                  /* Bold text */
+    color: white;
+    background-color: #ff000094;          /* Red background color */
+    border: none;                       /* Remove border */
+    border-radius: 8px;                 /* Rounded corners */
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: background-color 0.1s ease-in-out;  /* Smooth transition for color */
+}
+/* Hover effect */
+#stopButton:hover {
+    background-color: #ff5353;          /* Darker red on hover */
+    box-shadow: 0 0 10px 3px #ff0000;
+}
+
+/* Active (when clicked) effect */
+#stopButton:active {
+    background-color: #000000;          /* Even darker red when clicked */
+               /* Button returns to normal position */
+}
+
+/* Positioning the button */
+#stopButton {
+    position: absolute;                 /* Position relative to the nearest positioned ancestor */
+    top: 109.5%;                           /* Adjust as needed */
+    left: 14%;                          /* Adjust as needed */
+       /* Center the button */
+}
+
+    /* Styling for the audio player */
+    
+
+    #audioPlayer {
+    position: absolute; /* Allows movement */
+    top: 99.9%;           /* Adjust vertical position */
+    left: 50%;            /* Adjust horizontal position */
+    transform: translate(-50%, -50%); /* Center the audio player */
+    padding: 0px;        /* Optional: padding inside the audio player */
+    background: #f8f4f4;    /* Optional: background color for the audio player */
+    border-radius: 0;    /* No rounded corners (sharp edges) */}
+#logo {
+    width: 180px; /* You can adjust the size of the image */
+    height: auto; /* Maintain aspect ratio */
+    position: absolute; /* Allows you to position the image freely */
+    
+    /* Positioning options */
+    top: 109%; /* 50% from the top of the container */
+    left: 0.5%; /* 50% from the left of the container */
+    
+    /* Using transform to center the image exactly */
+    transform: translate(-50%, -50%); /* Centers the image by shifting it back */
+    transform: scale(1.0);
+}
+
+.color-block {
+            width: 101%;
+            height: 100px;
+            background: rgb(158,0,255);
+            background: linear-gradient(234deg, rgba(158,0,255,1) 0%, rgba(243,101,0,1) 60%, rgba(0,5,255,1) 100%);
+            position: absolute;
+            top: 110.5%;  /* 50% from the top of the screen */
+            left: 50%; /* 50% from the left of the screen */
+            transform: translate(-50%, -50%); /* Center the block */
+        }
+
+        .color-block2 {
+            width: 101%;
+            height: 100px;
+            background: rgb(106,255,95);
+            background: linear-gradient(234deg, rgba(106,255,95,1) 0%, rgba(254,255,100,1) 50%, rgba(255,138,120,1) 100%);
+            position: absolute;
+            top: 0%;  /* 50% from the top of the screen */
+            left: 50%; /* 50% from the left of the screen */
+            transform: translate(-50%, -50%); /* Center the block */
+        }
+
+        .custom-line {
+            width: 101.5%;             /* Set the width of the line */
+            height: 15px;            /* Set the thickness of the line */
+            background-color: #000000; /* Line color */
+            position: absolute;     /* Absolute positioning */
+            top: 9.6%;               /* Position from the top */
+            left: -1%;              /* Position from the left */
+            transform: translateY(-50%); /* Center the line vertically */
+            margin: 0;              /* Remove any default margin */
+        }
+
+        .custom-line2 {
+            width: 15px;             /* Set the width of the line */
+            height: 20%;            /* Set the thickness of the line */
+            background-color: #000000; /* Line color */
+            position: absolute;     /* Absolute positioning */
+            top: 0.5%;               /* Position from the top */
+            left: 38%;              /* Position from the left */
+            transform: translateY(-50%); /* Center the line vertically */
+            margin: 0;              /* Remove any default margin */
+        }
+
+        .custom-line2-2 {
+            width: 15px;             /* Set the width of the line */
+            height: 20%;            /* Set the thickness of the line */
+            background-color: #000000; /* Line color */
+            position: absolute;     /* Absolute positioning */
+            top: 0.5%;               /* Position from the top */
+            left: 61%;              /* Position from the left */
+            transform: translateY(-50%); /* Center the line vertically */
+            margin: 0;              /* Remove any default margin */
+        }
+
+        .custom-line3 {
+            width: 15px;            /* Set the width to 1px for a thin line */
+            height: 110.5%;         /* Set the height of the line */
+            background-color: #000000; /* Set the color of the line */
+            position: absolute;    /* Allows positioning */
+            left: -0.3%;             /* Position the line in the center horizontally */
+            top: 50px;             /* Optional: distance from the top */
+            transform: translateX(-50%); /* Centers the line exactly in the middle */
+        }
+
+        .custom-line3-2 {
+            width: 15px;            /* Set the width to 1px for a thin line */
+            height: 110.5%;         /* Set the height of the line */
+            background-color: #000000; /* Set the color of the line */
+            position: absolute;    /* Allows positioning */
+            left: 100.05%;             /* Position the line in the center horizontally */
+            top: 50px;             /* Optional: distance from the top */
+            transform: translateX(-50%); /* Centers the line exactly in the middle */
+        }
+
+        .brst-line {
+            width: 11px;            /* Set the width to 1px for a thin line */
+            height: 12.7%;         /* Set the height of the line */
+            background-color: #000000; /* Set the color of the line */
+            position: absolute;    /* Allows positioning */
+            left: 13%;             /* Position the line in the center horizontally */
+            bottom: -19%;             /* Optional: distance from the top */
+            transform: translateX(-50%); /* Centers the line exactly in the middle */
+        }
+
+        .brst-line-2 {
+            width: 11px;            /* Set the width to 1px for a thin line */
+            height: 12.7%;         /* Set the height of the line */
+            background-color: #000000; /* Set the color of the line */
+            position: absolute;    /* Allows positioning */
+            left: 25.97%;             /* Position the line in the center horizontally */
+            bottom: -19%;             /* Optional: distance from the top */
+            transform: translateX(-50%); /* Centers the line exactly in the middle */
         }
 
 
+        .brst-line-3 {
+            width: 11px;            /* Set the width to 1px for a thin line */
+            height: 12.7%;         /* Set the height of the line */
+            background-color: #000000; /* Set the color of the line */
+            position: absolute;    /* Allows positioning */
+            left: 42%;             /* Position the line in the center horizontally */
+            bottom: -19%;             /* Optional: distance from the top */
+            transform: translateX(-50%); /* Centers the line exactly in the middle */
+        }
 
-        /* Style for the vertical line in the middle */
+        .brst-line-4 {
+            width: 11px;            /* Set the width to 1px for a thin line */
+            height: 12.7%;         /* Set the height of the line */
+            background-color: #000000; /* Set the color of the line */
+            position: absolute;    /* Allows positioning */
+            left: 84.8%;             /* Position the line in the center horizontally */
+            bottom: -19%;             /* Optional: distance from the top */
+            transform: translateX(-50%); /* Centers the line exactly in the middle */
+        }
 
-        
-
+        .brst-line-5 {
+            width: 11px;            /* Set the width to 1px for a thin line */
+            height: 12.7%;         /* Set the height of the line */
+            background-color: #000000; /* Set the color of the line */
+            position: absolute;    /* Allows positioning */
+            left: 68%;             /* Position the line in the center horizontally */
+            bottom: -19%;             /* Optional: distance from the top */
+            transform: translateX(-50%); /* Centers the line exactly in the middle */
+        }
 
 
     </style>
@@ -243,12 +498,32 @@ h5 {
 </head>
 
 <body>
+    <div class="custom-line"></div>
+  
+    
+
+    
+
+    <div class="color-block"></div>
+
+    <div class="color-block2"></div>
+
+    <div class="div-button" onclick="window.location.href='https://brstofficial.github.io'">
+        Go back to Brst Website
+    </div>
+    <img id="logo" src="images/logo.png" alt="Image can't load... fuck.">
+
+    <img id="gif" src="images/FLgif.gif" alt="Loading Animation" />
+
+    <div class="div-oldindex" onclick="window.location.href='index_old.html'">
+        Go to old Website Design
+    </div>
 
     <h1>Epic Beerest Player</h1>
 
+    <h3>Hi, Beerest here! So as you can see this is my so far small library of songs and i actually wrote it in HTML and CSS myself.(well i did ask ai what to do here and then) If you have any ideas on what i could add to my sites reach out to me via email.</h3>
 
-
-    <h5>HTML Coded by Beerest !</h5>
+    <h5>HTML/CSS Coded by Beerest ! (contact: beerest@email.cz)</h5>
 
    
    
@@ -258,43 +533,69 @@ h5 {
 
         <div id="songList">
 
-    <h2>Electronic Music</h2>
+    <h2>Electronic/Synth</h2>
+
     <div class="song" data-src="songs/Danci.mp3">Danci</div>
+
     <div class="song" data-src="songs/Fast.mp3">Fast</div>
+
     <div class="song" data-src="songs/Hawk.mp3">Hawk</div>
+
     <div class="song" data-src="songs/Jamindrop6.mp3">Jam in drop 6</div>
+
     <div class="song" data-src="songs/69song.mp3">69 song</div>
+
     <div class="song" data-src="songs/rapsar.mp3">rapsar</div>
+
     <div class="song" data-src="songs/WildPiano.mp3">Wild Piano</div>
+
     <div class="song" data-src="songs/51Projects.mp3">51 projects</div>
+
     <div class="song" data-src="songs/RapeEar.mp3">RapeEar</div>
+
     <div class="song" data-src="songs/TheSirens.mp3">The sirens</div>
+
     <div class="song" data-src="songs/dkkad6.mp3">dkkad6</div>
+
     <div class="song" data-src="songs/Tetrisdnb.mp3">Tetris Theme DnB RemiX</div>
+
     <div class="song" data-src="songs/meltmysynth.mp3">Melt My Synth</div>
+
     <div class="song" data-src="songs/USaidULovedMe.mp3">U Said U Loved Me</div>
+
     <div class="song" data-src="songs/score.mp3">Score</div>
 </div>
 
 
-        <!-- Vertical Line in the middle -->
+        
 
        
 
 
 
         <div id="songListRight">
-    <h2>Metal/Rock Music</h2>
+    <h2>Metal/Rock</h2>
+
     <div class="song" data-src="songs/Broken.mp3">Broken</div>
+
     <div class="song" data-src="songs/BrokenIns.mp3">Broken Instrumental</div>
+
     <div class="song" data-src="songs/Fly.mp3">Fly</div>
+
     <div class="song" data-src="songs/metal.mp3">Metal</div>
+
     <div class="song" data-src="songs/punkrock.mp3">PunkRock</div>
+
     <div class="song" data-src="songs/RedBloodSun.mp3">Red Blood Sun In The Sky</div>
+
     <div class="song" data-src="songs/RedBloodIns.mp3">Red Blood Sun Instrumental</div>
+
     <div class="song" data-src="songs/ShouldIDieIns.mp3">Should I Die Instrumental</div>
+
     <div class="song" data-src="songs/SimpleRockSong.mp3">Simple Rock Song</div>
+
     <div class="song" data-src="songs/Why.mp3">Why</div>
+
     <div class="song" data-src="songs/verygoodmetal.mp3">Good Metal</div>
 </div>
     </div>
@@ -315,9 +616,20 @@ h5 {
 
     <!-- Stop Button -->
 
-    <button id="stopButton">Stop</button>
+    <button id="stopButton">Stop the Music!</button>
 
+    
+    <div class="custom-line2"></div>
 
+    <div class="custom-line2-2"></div>
+
+    <div class="custom-line3"></div>
+
+    <div class="custom-line3-2"></div>
+
+    <div class="player-corner"></div>
+
+    <div class="player-corner-2"></div>
 
     <script>
 
@@ -433,6 +745,19 @@ document.getElementById("redirectButton").onclick = function() {
       }
     }
   </script>  
+
+    <div class="brst-line"></div>
+
+    <div class="brst-line-2"></div>
+
+    <div class="brst-line-3"></div>
+
+    <div class="brst-line-4"></div>
+    
+    <div class="brst-line-5"></div>
+
+    <div class="player-corner-2"></div>
+
 </body>
 
 </html>
