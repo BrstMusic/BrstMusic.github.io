@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<img id="gif" src="images/FLgif.gif" alt="Loading Animation" />
+
+    <!-- Favicon for browser icon -->
+
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+
+    <link rel="manifest" href="images/site.webmanifest">
+
+    
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Audio Player</title>
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            padding: 20px;
+
+            background-color: #85cc29; /* Light sky blue background */
+
+            top:8%
+
+            margin: 0;
+
+            display: block; /* Standard block display for left alignment */
+
+            position: relative; /* Positioning context for the GIF */
+
+        }
+
+        .container {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            width:80%; /* Adjust container width */
+
+            top:110%
+
+            margin: 0 auto; /* Center the container horizontally */
+
+        }
+
+
+
+        #songList {
+
+            margin-top: 0px;
+
+            width: 10%; /* Adjust list widths to allow space between them */
+
+            min-width: 200px;
+
+            max-width: 350px;
+
+            position: relative;
+
+            padding-left: 10px;
+
+            padding-right: 10px;
+
+        }
+
+
+
+    #website-counter {
+
+position: center;
+
+right:5%;
+
+top:30%;
+
+width:3%
+
+
+
+
+
+
+
+
+
+}
+
+#redirectButton {
+    position: absolute;
+    bottom: 660px;  /* Position the button near the bottom */
+    right: 400px;   /* Position the button near the right */
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#redirectButton:hover {
+    background-color: #45a049;
+
+
+}
+#songListRight {
+
+    margin-top: 0px;
+
+    width: 10%; /* Adjust list width to allow space between them */
+
+    min-width: 200px;
+
+    max-width: 350px;
+
+    position: absolute; /* Position it absolutely */
+
+    top: 40px; /* Adjust to position the list vertically */
+
+    right: 10px; /* Adjust the right distance from the edge of the screen */
+
+    padding-left: 20px; /* Adjust left padding to move it closer to the edge */
+
+    padding-right: 10px;
+
+}
+
+h1 {
+
+    position: absolute;
+
+    top: -15px; /* Moves the heading 100px from the top of the screen */
+
+    left: 50%; /* Moves the heading to the center horizontally */
+
+    transform: translateX(-50%); /* Adjusts it precisely to the center */
+
+}
+
+h4 {
+
+    position: absolute;
+
+    top: 620px; /* Moves the heading 100px from the top of the screen */
+
+    left: 50.7%; /* Moves the heading to the center horizontally */
+
+    transform: translateX(-50%); /* Adjusts it precisely to the center */
+
+}
+
+h5 {
+
+    position: absolute;
+
+    top: 649px; /* Moves the heading 100px from the top of the screen */
+
+    left: 50.7%; /* Moves the heading to the center horizontally */
+
+    transform: translateX(-50%); /* Adjusts it precisely to the center */
+
+}
+
+        .song {
+
+            display: block; /* Ensures each button is on its own line */
+
+            cursor: pointer;
+
+            margin: 3px 0; /* Reduced margin for more compact spacing */
+
+            padding: 6px 10px; /* Reduced padding for smaller buttons */
+
+            background-color: gray;
+
+            color: white;
+
+            border-radius: 25px;
+
+            text-align: center;
+
+            transition: background-color 0.3s ease;
+
+            text-decoration: none;
+
+            font-size: 14px; /* Smaller font size for the button text */
+
+        }
+
+
+
+        .song:hover {
+
+            background-color: red;
+
+        }
+
+
+
+        audio {
+
+            display: block;
+
+            margin-top: 30px; /* Move the progress bar down */
+
+            width: 100%;
+
+        }
+
+
+
+        #gif {
+
+            position: absolute;
+
+            bottom: 640px; /* Above the audio player */
+
+            right: 20px; /* Align to the right side */
+
+            width: 200px; /* Increase the width of the GIF */
+
+            height: auto; /* Maintain the aspect ratio */
+
+            border-radius: 15px
+
+       
+
+
+        }
+
+        /* Style for displaying the currently playing song */
+
+        #currentSong {
+
+            font-weight: bold;
+
+            font-size: 16px;
+
+            text-align: right;
+
+            position: absolute;
+
+            top: 84%;
+
+            right: 650px; /* Position it next to the middle line on the right side */
+
+            transform: translateY(-10%); /* Center vertically */
+
+        }
+
+
+
+        /* Style for the vertical line in the middle */
+
+        #verticalLine {
+
+            position: absolute;
+
+            top: 10%;
+
+            bottom: 25%;
+
+            left: 50%; /* Place it in the middle of the screen */
+
+            border-left: 8px solid black; /* Create the vertical line */
+
+        }
+
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Epic Beerest Player</h1>
+
+
+
+    <h5>HTML Coded by Beerest !</h5>
+
+   
+    <!-- Fixed Redirect Button -->
+    <button id="redirectButton">Gimme a Review!</button>
+
+
+    <div class="container">
+
+        <div id="songList">
+
+    <h2>Electronic Music</h2>
+    <div class="song" data-src="songs/Danci.mp3">Danci</div>
+    <div class="song" data-src="songs/Fast.mp3">Fast</div>
+    <div class="song" data-src="songs/Hawk.mp3">Hawk</div>
+    <div class="song" data-src="songs/Jamindrop6.mp3">Jam in drop 6</div>
+    <div class="song" data-src="songs/69song.mp3">69 song</div>
+    <div class="song" data-src="songs/rapsar.mp3">rapsar</div>
+    <div class="song" data-src="songs/WildPiano.mp3">Wild Piano</div>
+    <div class="song" data-src="songs/51Projects.mp3">51 projects</div>
+    <div class="song" data-src="songs/RapeEar.mp3">RapeEar</div>
+    <div class="song" data-src="songs/TheSirens.mp3">The sirens</div>
+    <div class="song" data-src="songs/dkkad6.mp3">dkkad6</div>
+    <div class="song" data-src="songs/Tetrisdnb.mp3">Tetris Theme DnB RemiX</div>
+    <div class="song" data-src="songs/meltmysynth.mp3">Melt My Synth</div>
+    <div class="song" data-src="songs/USaidULovedMe.mp3">U Said U Loved Me</div>
+    <div class="song" data-src="songs/score.mp3">Score</div>
+</div>
+
+
+        <!-- Vertical Line in the middle -->
+
+       
+
+
+
+        <div id="songListRight">
+    <h2>Metal/Rock Music</h2>
+    <div class="song" data-src="songs/Broken.mp3">Broken</div>
+    <div class="song" data-src="songs/BrokenIns.mp3">Broken Instrumental</div>
+    <div class="song" data-src="songs/Fly.mp3">Fly</div>
+    <div class="song" data-src="songs/metal.mp3">Metal</div>
+    <div class="song" data-src="songs/punkrock.mp3">PunkRock</div>
+    <div class="song" data-src="songs/RedBloodSun.mp3">Red Blood Sun In The Sky</div>
+    <div class="song" data-src="songs/RedBloodIns.mp3">Red Blood Sun Instrumental</div>
+    <div class="song" data-src="songs/ShouldIDieIns.mp3">Should I Die Instrumental</div>
+    <div class="song" data-src="songs/SimpleRockSong.mp3">Simple Rock Song</div>
+    <div class="song" data-src="songs/Why.mp3">Why</div>
+    <div class="song" data-src="songs/verygoodmetal.mp3">Good Metal</div>
+</div>
+    </div>
+
+
+
+    <!-- Display the current song name -->
+
+    <div id="currentSong">Currently Playing: None</div>
+
+
+
+    <audio id="audioPlayer" controls></audio>
+
+
+
+
+
+    <!-- Stop Button -->
+
+    <button id="stopButton">Stop</button>
+
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const audioPlayer = document.getElementById("audioPlayer");
+
+            const songsLeft = document.querySelectorAll("#songList .song");
+
+            const songsRight = document.querySelectorAll("#songListRight .song");
+
+            const currentSongDisplay = document.getElementById("currentSong");
+
+
+
+            let songIndex = 0; // To keep track of the current song
+
+
+
+            function playSong(index, list) {
+
+                const songSrc = list[index].getAttribute("data-src");
+
+                audioPlayer.src = songSrc;
+
+                audioPlayer.play();
+
+                currentSongDisplay.textContent = "Currently Playing: " + list[index].textContent;
+
+            }
+
+
+
+            // Event listener for songs in the left list
+
+            songsLeft.forEach((song, index) => {
+
+                song.addEventListener("click", () => {
+
+                    songIndex = index; // Update song index
+
+                    playSong(songIndex, songsLeft);
+
+                });
+
+            });
+
+
+
+            // Event listener for songs in the right list
+
+            songsRight.forEach((song, index) => {
+
+                song.addEventListener("click", () => {
+
+                    songIndex = index; // Update song index
+
+                    playSong(songIndex, songsRight);
+
+                });
+
+            });
+
+
+
+            // Event listener for the 'ended' event to play the next song
+
+            audioPlayer.addEventListener("ended", () => {
+
+                songIndex++;
+
+                if (songIndex >= songsLeft.length) {
+
+                    songIndex = 0; // Loop back to the first song if at the end
+
+                }
+
+                playSong(songIndex, songsLeft);
+
+            });
+
+
+
+            // Stop button functionality
+
+            document.getElementById("stopButton").addEventListener("click", function() {
+
+                audioPlayer.pause();           // Stop the audio
+
+                audioPlayer.currentTime = 0;   // Reset the audio to the beginning
+
+                currentSongDisplay.textContent = "Currently Playing: None"; // Clear the current song display
+
+            });
+
+        });
+
+document.getElementById("redirectButton").onclick = function() {
+    window.location.href = "review.html";  // Redirect to review.html
+};
+
+    </script>
+<audio id="backgroundAudio" autoplay>
+    <source src="mac.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script type="text/javascript">
+    window.onload = function() {
+      var audio = document.getElementById("backgroundAudio");
+      if (audio) {
+        audio.play();
+      }
+    }
+  </script>  
+</body>
+
+</html>
+
